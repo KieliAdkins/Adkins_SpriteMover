@@ -13,13 +13,13 @@ public class ShipMovement : MonoBehaviour {
 	void Start () {
         // Load the sprite renderer component 
         theRenderer = gameObject.GetComponent<SpriteRenderer>();
-	}
+
+        // Loading the transform component fron the object the code is on
+        tf = GetComponent<Transform>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        // Loading the transform component fron the object the code is on
-        tf = GetComponent<Transform>();
-
         // if statement for spacebar reset
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -54,7 +54,7 @@ public class ShipMovement : MonoBehaviour {
             tf.position = tf.position + (Vector3.left * moveSpeed);
         }
 
-        while (Input.GetKey(KeyCode.LeftShift) || (Input.GetKey(KeyCode.RightShift)))
+        if (Input.GetKey(KeyCode.LeftShift) || (Input.GetKey(KeyCode.RightShift)))
         {
             // if statement for up key controlled movement
             if (Input.GetKey(KeyCode.UpArrow))
